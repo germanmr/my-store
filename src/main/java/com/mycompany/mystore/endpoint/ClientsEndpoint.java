@@ -38,7 +38,7 @@ public class ClientsEndpoint implements Clients {
     }
 
     @Override
-    @GetMapping("/{filter}")
+    @GetMapping("/filter/{filter}")
     public Set<Client> getByName(@NotEmpty @PathVariable("filter") String filter) {
         return clientsService.getByFilter(requireNonNull(filter));
     }
