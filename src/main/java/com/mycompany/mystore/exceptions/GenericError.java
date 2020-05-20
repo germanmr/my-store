@@ -5,6 +5,9 @@ import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * We return this entity from the {@link GenericExceptionHandler}
+ */
 public class GenericError {
 
     private final String code;

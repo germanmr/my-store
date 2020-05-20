@@ -22,6 +22,8 @@
         <findbugs.version>3.0.2</findbugs.version>
         <javax.version>2.0.1.Final</javax.version>
         <javaxinject.version>1</javaxinject.version>
+        <mockito.version>1.10.19</mockito.version>
+        <guava.version>29.0-jre</guava.version>
     </properties>
 
     <dependencies>
@@ -53,6 +55,21 @@
             <artifactId>validation-api</artifactId>
             <version>${javax.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
 
     </dependencies>
 
