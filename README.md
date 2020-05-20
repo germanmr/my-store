@@ -35,5 +35,3 @@ Then you can run the JAR file with:
 java -jar target/*.jar
 ```
 *Instead of `mvn` you can also use the maven-wrapper `./mvnw` to ensure you have everything necessary to run the Maven build.*
-
-### Deploy to Docker Containers
