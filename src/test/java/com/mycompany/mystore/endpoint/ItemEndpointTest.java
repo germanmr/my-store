@@ -1,6 +1,7 @@
 package com.mycompany.mystore.endpoint;
 
 import com.mycompany.mystore.dto.ItemDto;
+import com.mycompany.mystore.exceptions.NoItemFoundException;
 import com.mycompany.mystore.service.ItemService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,6 +64,15 @@ public class ItemEndpointTest {
         when(itemService.getByFilter(filter)).thenThrow(new NullPointerException());
 
         Set<ItemDto> actual = itemsEndpoint.getByName(filter);
+
+    }
+
+    @Test(expected = NoItemFoundException.class)
+    public void getByNameNoItemFoundException() {
+
+        when(itemService.getById(ITEM_ID)).thenThrow(new NoItemFoundException());
+
+        itemsEndpoint.get(ITEM_ID);
 
     }
 
