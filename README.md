@@ -1,7 +1,7 @@
 # my-store
 
 This project is a Spring boot app for Demo purposes.
-The idea is to expose a Rest backend for
+The idea is to expose a Rest backend
 
 ## Getting Started
 
