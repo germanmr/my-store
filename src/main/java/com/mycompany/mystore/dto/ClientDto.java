@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 
-public class Client {
+public class ClientDto {
 
     private final long id;
     private final String name;
@@ -15,8 +15,8 @@ public class Client {
      * @param id
      * @param name
      */
-    public Client(@Nonnull long id,
-                  @Nonnull String name) {
+    public ClientDto(@Nonnull long id,
+                     @Nonnull String name) {
         this.id = requireNonNull(id);
         this.name = requireNonNull(name);
     }
@@ -32,10 +32,10 @@ public class Client {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Client)) return false;
-        Client client = (Client) o;
-        return id == client.id &&
-                Objects.equals(name, client.name);
+        if (!(o instanceof ClientDto)) return false;
+        ClientDto clientDto = (ClientDto) o;
+        return id == clientDto.id &&
+                Objects.equals(name, clientDto.name);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "ClientDto{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

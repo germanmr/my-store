@@ -1,6 +1,6 @@
 package com.mycompany.mystore.service;
 
-import com.mycompany.mystore.dto.Client;
+import com.mycompany.mystore.dto.ClientDto;
 import com.mycompany.mystore.exceptions.NoClientsException;
 import com.mycompany.mystore.repository.ClientRepository;
 import org.springframework.stereotype.Service;
@@ -13,49 +13,49 @@ import java.util.Set;
 import static java.util.Objects.requireNonNull;
 
 @Service
-public class DefaultClientService implements ClientsService {
+public class DefaultClientService implements ClientService {
 
     private final ClientRepository clientRepository;
-    private final Set<Client> clients;
+    private final Set<ClientDto> clientDtos;
 
     @Inject
     public DefaultClientService(@Nonnull ClientRepository clientRepository) {
         requireNonNull(clientRepository);
         this.clientRepository = clientRepository;
 
-        Set<Client> clients = new HashSet<>();
-        clients.add(new Client(1, "German"));
-        this.clients = clients;
+        Set<ClientDto> clientDtos = new HashSet<>();
+        clientDtos.add(new ClientDto(1, "German"));
+        this.clientDtos = clientDtos;
 
     }
 
     @Override
-    public Client getById(@Nonnull Long clientId) {
+    public ClientDto getById(@Nonnull Long clientId) {
         requireNonNull(clientId);
 
-        Client client = null;
-        client = clients.stream()
+        ClientDto clientDto = null;
+        clientDto = clientDtos.stream()
                 .filter(cl -> cl.getId() == clientId)
                 .findFirst()
                 .orElseThrow(() -> new NoClientsException());
 
-        return client;
+        return clientDto;
     }
 
     @Override
-    public Set<Client> getAll() {
-        return clients;
+    public Set<ClientDto> getAll() {
+        return clientDtos;
     }
 
     @Override
-    public Set<Client> getByFilter(@Nonnull String filter) {
+    public Set<ClientDto> getByFilter(@Nonnull String filter) {
         requireNonNull(filter);
 
-        clients.stream()
+        clientDtos.stream()
                 .findAny()
                 .orElseThrow(() -> new NoClientsException());
 
-        return clients;
+        return clientDtos;
     }
 
 }
