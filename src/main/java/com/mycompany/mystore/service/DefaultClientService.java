@@ -4,7 +4,6 @@ import com.mycompany.mystore.dto.Client;
 import com.mycompany.mystore.exceptions.NoClientsException;
 import com.mycompany.mystore.repository.ClientRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
@@ -57,11 +56,6 @@ public class DefaultClientService implements ClientsService {
                 .orElseThrow(() -> new NoClientsException());
 
         return clients;
-    }
-
-    @ExceptionHandler({NoClientsException.class})
-    public String handle() {
-        return null;
     }
 
 }
