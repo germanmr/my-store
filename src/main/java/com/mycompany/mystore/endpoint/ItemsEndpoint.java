@@ -1,7 +1,7 @@
 package com.mycompany.mystore.endpoint;
 
-import com.mycompany.mystore.dto.ClientDto;
-import com.mycompany.mystore.service.ClientService;
+import com.mycompany.mystore.dto.ItemDto;
+import com.mycompany.mystore.service.ItemService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,31 +16,31 @@ import static java.util.Objects.requireNonNull;
 
 @RestController
 @RequestMapping("item")
-public class ItemsEndpoint implements Client {
+public class ItemsEndpoint implements Items {
 
-    private final ClientService clientService;
+    private final ItemService itemService;
 
     @Inject
-    public ItemsEndpoint(@Nonnull ClientService clientService) {
-        this.clientService = requireNonNull(clientService);
+    public ItemsEndpoint(@Nonnull ItemService itemService) {
+        this.itemService = requireNonNull(itemService);
     }
 
     @Override
-    @GetMapping("/{clientId}")
-    public ClientDto get(@Nonnull @PathVariable("clientId") long clientId) {
-        return clientService.getById(requireNonNull(clientId));
+    @GetMapping("/{id}")
+    public ItemDto get(@Nonnull @PathVariable("itemId") Integer id) {
+        return itemService.getById(requireNonNull(id));
     }
 
     @Override
     @GetMapping("/all")
-    public Set<ClientDto> getAll() {
-        return clientService.getAll();
+    public Set<ItemDto> getAll() {
+        return itemService.getAll();
     }
 
     @Override
     @GetMapping("/filter/{filter}")
-    public Set<ClientDto> getByName(@NotEmpty @PathVariable("filter") String filter) {
-        return clientService.getByFilter(requireNonNull(filter));
+    public Set<ItemDto> getByName(@NotEmpty @PathVariable("filter") String filter) {
+        return itemService.getByFilter(requireNonNull(filter));
     }
 
 }

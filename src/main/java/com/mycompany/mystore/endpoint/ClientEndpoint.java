@@ -26,8 +26,8 @@ public class ClientEndpoint implements Client {
     }
 
     @Override
-    @GetMapping("/{clientId}")
-    public ClientDto get(@Nonnull @PathVariable("clientId") long clientId) {
+    @GetMapping("/{id}")
+    public ClientDto get(@Nonnull @PathVariable("clientId") Long clientId) {
         return clientService.getById(requireNonNull(clientId));
     }
 

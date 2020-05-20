@@ -4,15 +4,15 @@ import java.util.Objects;
 
 public class ItemDto {
 
-    private final int id;
+    private final Integer id;
     private final String description;
 
-    public ItemDto(int id, String description) {
+    public ItemDto(Integer id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
