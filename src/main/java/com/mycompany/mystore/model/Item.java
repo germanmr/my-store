@@ -1,18 +1,18 @@
-package com.mycompany.mystore.dto;
+package com.mycompany.mystore.model;
 
 import java.math.BigInteger;
 import java.util.Objects;
 
-public class ItemDto {
+public class Item {
 
     private final Integer id;
     private final String description;
     private final BigInteger quantity;
 
-    public ItemDto(Integer id, String description,BigInteger quantity) {
+    public Item(Integer id, String description, BigInteger quantity) {
         this.id = id;
         this.description = description;
-        this.quantity=quantity;
+        this.quantity = quantity;
     }
 
     public Integer getId() {
@@ -30,11 +30,11 @@ public class ItemDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ItemDto)) return false;
-        ItemDto itemDto = (ItemDto) o;
-        return Objects.equals(id, itemDto.id) &&
-                Objects.equals(description, itemDto.description) &&
-                Objects.equals(quantity, itemDto.quantity);
+        if (!(o instanceof Item)) return false;
+        Item item = (Item) o;
+        return Objects.equals(id, item.id) &&
+                Objects.equals(description, item.description) &&
+                Objects.equals(quantity, item.quantity);
     }
 
     @Override
@@ -44,11 +44,10 @@ public class ItemDto {
 
     @Override
     public String toString() {
-        return "ItemDto{" +
+        return "Item{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", quantity=" + quantity +
                 '}';
     }
 }
-
