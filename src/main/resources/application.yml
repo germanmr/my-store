@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sample-spring-redis
+  redis:
+    #host: 127.0.0.1
+    #host: localhost
+    host: redis
+    #    host: 192.168.99.100

@@ -16,18 +16,18 @@ import static java.util.Objects.requireNonNull;
 
 @RestController
 @RequestMapping("item")
-public class ItemsEndpoint implements Items {
+public class ItemEndpoint implements Item {
 
     private final ItemService itemService;
 
     @Inject
-    public ItemsEndpoint(@Nonnull ItemService itemService) {
+    public ItemEndpoint(@Nonnull ItemService itemService) {
         this.itemService = requireNonNull(itemService);
     }
 
     @Override
     @GetMapping("/{id}")
-    public ItemDto get(@Nonnull @PathVariable("itemId") Integer id) {
+    public ItemDto get(@Nonnull @PathVariable("id") Integer id) {
         return itemService.getById(requireNonNull(id));
     }
 

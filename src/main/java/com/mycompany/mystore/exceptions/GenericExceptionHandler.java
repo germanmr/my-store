@@ -19,8 +19,8 @@ public class GenericExceptionHandler {
 
     }
 
-    @ExceptionHandler(NoClientsException.class)
-    public GenericError handleNoClientsException(@Nonnull NoClientsException e) {
+    @ExceptionHandler(NoClientsFoundException.class)
+    public GenericError handleNoClientsException(@Nonnull NoClientsFoundException e) {
         requireNonNull(e);
         String errorCode = UUID.randomUUID().toString();
         return new GenericError(errorCode, "We didn´t find any clients!");

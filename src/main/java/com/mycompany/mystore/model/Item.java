@@ -1,30 +1,48 @@
 package com.mycompany.mystore.model;
 
+import org.springframework.data.redis.core.index.Indexed;
+
 import java.math.BigInteger;
 import java.util.Objects;
 
+/**
+ * This class is stored in the same structure as Order
+ */
 public class Item {
 
-    private final Integer id;
-    private final String description;
-    private final BigInteger quantity;
+    @Indexed
+    private Long id;
+    private String description;
+    private BigInteger quantity;
 
-    public Item(Integer id, String description, BigInteger quantity) {
+    public Item(Long id, String description, BigInteger quantity) {
         this.id = id;
         this.description = description;
         this.quantity = quantity;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public BigInteger getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(BigInteger quantity) {
+        this.quantity = quantity;
     }
 
     @Override

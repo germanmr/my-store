@@ -1,14 +1,8 @@
 package com.mycompany.mystore.service;
 
 import com.mycompany.mystore.dto.ClientDto;
+import com.mycompany.mystore.service.base.CrudService;
 
-import java.util.Set;
+public interface ClientService extends CrudService<ClientDto, Long> {
 
-public interface ClientService {
-
-    ClientDto getById(Long clientId);
-
-    Set<ClientDto> getAll();
-
-    Set<ClientDto> getByFilter(String filter);
 }

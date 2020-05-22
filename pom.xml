@@ -11,7 +11,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.1.RELEASE</version>
+        <!--        <version>1.4.1.RELEASE</version>-->
+        <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -22,7 +23,8 @@
         <findbugs.version>3.0.2</findbugs.version>
         <javax.version>2.0.1.Final</javax.version>
         <javaxinject.version>1</javaxinject.version>
-        <mockito.version>1.10.19</mockito.version>
+        <!--        <mockito.version>1.10.19</mockito.version>-->
+        <mockito.version>2.0.2-beta</mockito.version>
         <guava.version>29.0-jre</guava.version>
     </properties>
 
@@ -63,13 +65,43 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.3.3</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.1.0</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.14.2</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 

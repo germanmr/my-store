@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,10 +20,10 @@ import static org.mockito.Mockito.when;
 public class ItemEndpointTest {
 
     private static final Integer ITEM_ID = Integer.parseInt("1");
-    private static ItemDto itemDto = new ItemDto(ITEM_ID, "KEYBOARD");
+    private static ItemDto itemDto = new ItemDto(ITEM_ID, "KEYBOARD", BigInteger.ZERO);
 
     @InjectMocks
-    private ItemsEndpoint itemsEndpoint;
+    private ItemEndpoint itemsEndpoint;
 
     @Mock
     private ItemService itemService;

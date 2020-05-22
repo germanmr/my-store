@@ -1,14 +1,8 @@
 package com.mycompany.mystore.service;
 
 import com.mycompany.mystore.dto.ItemDto;
+import com.mycompany.mystore.service.base.CrudService;
 
-import java.util.Set;
+public interface ItemService extends CrudService<ItemDto, Integer> {
 
-public interface ItemService {
-
-    ItemDto getById(Integer id);
-
-    Set<ItemDto> getAll();
-
-    Set<ItemDto> getByFilter(String filter);
 }

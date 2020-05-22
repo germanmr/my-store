@@ -1,8 +1,7 @@
 package com.mycompany.mystore.service;
 
 import com.mycompany.mystore.dto.ClientDto;
-import com.mycompany.mystore.exceptions.NoClientsException;
-import com.mycompany.mystore.repository.ClientRepository;
+import com.mycompany.mystore.exceptions.NoClientsFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
@@ -15,13 +14,14 @@ import static java.util.Objects.requireNonNull;
 @Service
 public class DefaultClientService implements ClientService {
 
-    private final ClientRepository clientRepository;
+    //private final ClientRepository clientRepository;
     private final Set<ClientDto> clientDtos;
 
     @Inject
-    public DefaultClientService(@Nonnull ClientRepository clientRepository) {
-        requireNonNull(clientRepository);
-        this.clientRepository = clientRepository;
+    public DefaultClientService() {
+        //@Nonnull ClientRepository clientRepository
+//        requireNonNull(clientRepository);
+        //this.clientRepository = clientRepository;
 
         Set<ClientDto> clientDtos = new HashSet<>();
         clientDtos.add(new ClientDto(1, "German"));
@@ -37,7 +37,7 @@ public class DefaultClientService implements ClientService {
         clientDto = clientDtos.stream()
                 .filter(cl -> cl.getId() == clientId)
                 .findFirst()
-                .orElseThrow(() -> new NoClientsException());
+                .orElseThrow(() -> new NoClientsFoundException());
 
         return clientDto;
     }
@@ -53,7 +53,7 @@ public class DefaultClientService implements ClientService {
 
         clientDtos.stream()
                 .findAny()
-                .orElseThrow(() -> new NoClientsException());
+                .orElseThrow(() -> new NoClientsFoundException());
 
         return clientDtos;
     }
