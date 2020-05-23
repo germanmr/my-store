@@ -1,49 +1,37 @@
 package com.mycompany.mystore.dto;
 
-import javax.annotation.Nonnull;
 import java.util.Date;
 import java.util.Objects;
-
-import static java.util.Objects.requireNonNull;
+import java.util.Set;
 
 public class OrderDto {
 
-    private Long id;
-    private String name;
-    private Date date;
+    private final Long id;
+    private final ClientDto clientDto;
+    private final Set<ItemDto> items;
+    private final Date date;
 
-    /**
-     * @param id
-     * @param name
-     */
-    public OrderDto(@Nonnull long id,
-                    @Nonnull String name) {
-        this.id = requireNonNull(id);
-        this.name = requireNonNull(name);
+    public OrderDto(Long id, ClientDto clientDto, Set<ItemDto> items, Date date) {
+        this.id = id;
+        this.clientDto = clientDto;
+        this.items = items;
+        this.date = date;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public ClientDto getClientDto() {
+        return clientDto;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public Set<ItemDto> getItemDto() {
+        return items;
     }
 
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     @Override
@@ -51,22 +39,25 @@ public class OrderDto {
         if (this == o) return true;
         if (!(o instanceof OrderDto)) return false;
         OrderDto orderDto = (OrderDto) o;
-        return id == orderDto.id &&
-                Objects.equals(name, orderDto.name) &&
+        return Objects.equals(id, orderDto.id) &&
+                Objects.equals(clientDto, orderDto.clientDto) &&
+                Objects.equals(items, orderDto.items) &&
                 Objects.equals(date, orderDto.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, date);
+        return Objects.hash(id, clientDto, items, date);
     }
 
     @Override
     public String toString() {
-        return "OrderDto{" +
+        return "OderDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", clientDto=" + clientDto +
+                ", items=" + items +
                 ", date=" + date +
                 '}';
     }
 }
+

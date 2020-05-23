@@ -26,5 +26,12 @@ public class GenericExceptionHandler {
         return new GenericError(errorCode, "We didn´t find any clients!");
     }
 
+    @ExceptionHandler(NoOrderFoundException.class)
+    public GenericError handleNoOrderFoundException(@Nonnull NoOrderFoundException e) {
+        requireNonNull(e);
+        String errorCode = UUID.randomUUID().toString();
+        return new GenericError(errorCode, "We didn´t find any order for Id: " + e.getOrderIr());
+    }
+
 
 }

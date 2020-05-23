@@ -30,6 +30,19 @@ public class DataBaseConfiguration {
     @Bean
     public RedisTemplate<?, ?> redisTemplate() {
         RedisTemplate<byte[], byte[]> template = new RedisTemplate<>();
+        // We log connection properties
+        System.out.println("Database: " + redisConnectionFactory().getDatabase());
+        System.out.println("HostName: " + redisConnectionFactory().getHostName());
+        System.out.println("PassWord: " + redisConnectionFactory().getPassword());
+        System.out.println("Client Name: " + redisConnectionFactory().getClientName());
+        System.out.println("Port: " + redisConnectionFactory().getPort());
+
+        int database = redisConnectionFactory().getDatabase();
+        String hostName = redisConnectionFactory().getHostName();
+        String password = redisConnectionFactory().getPassword();
+        String clientName = redisConnectionFactory().getClientName();
+        int port = redisConnectionFactory().getPort();
+
         template.setConnectionFactory(redisConnectionFactory());
         return template;
     }

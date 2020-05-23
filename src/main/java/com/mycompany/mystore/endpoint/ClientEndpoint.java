@@ -28,7 +28,7 @@ public class ClientEndpoint implements Client {
     @Override
     @GetMapping("/{id}")
     public ClientDto get(@Nonnull @PathVariable("clientId") Long clientId) {
-        // TODO validate client Status!
+        // TODO validate client Status with another service?
         return clientService.getById(requireNonNull(clientId));
     }
 
