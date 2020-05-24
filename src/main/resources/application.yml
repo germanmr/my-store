@@ -8,8 +8,8 @@ spring:
 
     # SpringBoot normal running
     # host: 127.0.0.1
-    host: localhost
+    # host: localhost
     # When using docker instance
-    # host: redis
+    host: redis
     # When using docker toolbox(Legacy)
     # host: 192.168.99.100

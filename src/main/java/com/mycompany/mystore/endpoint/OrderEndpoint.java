@@ -25,6 +25,11 @@ public class OrderEndpoint implements Order {
         this.orderService = requireNonNull(orderService);
     }
 
+    @GetMapping("/hi")
+    public String sayHi() {
+        return "Hi from My Store Restful API!";
+    }
+
     @Override
     @GetMapping("/{id}")
     public OrderDto get(@Nonnull @PathVariable("id") Long orderId) {
