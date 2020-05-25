@@ -16,10 +16,11 @@
 #networks:
 #  mystore-network:
 #
+
 #version: '2'
 #services:
 #  my-store:
-#    image: german1982/my-store
+#    image: my-store
 #    ports:
 #      - "8080:8080"
 #    links:
@@ -30,22 +31,44 @@
 #    ports:
 #      - "6379:6379"
 
-version: '3'
+#version: '3'
+#services:
+#  store:
+#    #image: german1982/my-store
+#    image: my-store
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - consumer-producer
+#  redis:
+#    #image: redis
+#    image: "redis:alpine"
+#    command: [ "redis-server", "--protected-mode", "no" ]
+#    ports:
+#      - "6379:6379"
+#    networks:
+#      - consumer-producer
+#
+#networks:
+#  consumer-producer:
+#    #external: true
+
+
+version: '2'
 services:
-  store:
-    image: german1982/my-store
+  app:
+    #build: .
+#    image: german1982/my-store
+    image: my-store
     ports:
       - "8080:8080"
-    networks:
-      - consumer-producer
-  redis:
-    image: redis
+    links:
+      - "db:redis"
+    depends_on:
+      - db
+  db:
+    image: "redis:alpine"
     command: [ "redis-server", "--protected-mode", "no" ]
+    hostname: localhost
     ports:
       - "6379:6379"
-    networks:
-      - consumer-producer
-
-networks:
-  consumer-producer:
-    #external: true

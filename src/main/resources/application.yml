@@ -1,15 +1,12 @@
-spring:
-  application:
-    name: sample-spring-redis
-  redis:
-    # FIXME
-    #create different entries
-    # for differents environments then taken by configuration
-
-    # SpringBoot normal running
-    # host: 127.0.0.1
-    # host: localhost
-    # When using docker instance
-    host: redis
-    # When using docker toolbox(Legacy)
-    # host: 192.168.99.100
+#spring:
+#  application:
+#    name: sample-spring-redis
+#  redis:
+  # SpringBoot normal running
+  # host: 127.0.0.1
+  #     host: redis
+  # localhost word for docker network?
+  # host: localhost
+  # When using docker instance
+  # When using docker toolbox(Legacy)
+  # host: 192.168.99.100

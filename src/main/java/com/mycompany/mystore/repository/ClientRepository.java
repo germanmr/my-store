@@ -1,6 +1,7 @@
 package com.mycompany.mystore.repository;
 
-import com.mycompany.mystore.endpoint.Client;
+
+import com.mycompany.mystore.model.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

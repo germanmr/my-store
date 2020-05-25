@@ -10,6 +10,8 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @EnableRedisRepositories
 public class DataBaseConfiguration {
 
+    // TODO add @Value to the application properties file!!
+
 //    @Bean
 //    JedisConnectionFactory jedisConnectionFactory() {
 //        return new JedisConnectionFactory();
@@ -24,7 +26,12 @@ public class DataBaseConfiguration {
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory();
+        // This default constructor utilices hardcode connection properties,
+        //
+//        return new LettuceConnectionFactory();
+        String host = "redis";
+        int port = 6379;
+        return new LettuceConnectionFactory(host, port);
     }
 
     @Bean
@@ -42,6 +49,8 @@ public class DataBaseConfiguration {
         String password = redisConnectionFactory().getPassword();
         String clientName = redisConnectionFactory().getClientName();
         int port = redisConnectionFactory().getPort();
+
+//        redisConnectionFactory().setHostName("redis");
 
         template.setConnectionFactory(redisConnectionFactory());
         return template;
