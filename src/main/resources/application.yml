@@ -1,10 +1,10 @@
-#spring:
-#  application:
-#    name: sample-spring-redis
-#  redis:
+spring:
+  application:
+    name: sample-spring-redis
+  redis:
   # SpringBoot normal running
   # host: 127.0.0.1
-  #     host: redis
+  # host: redis
   # localhost word for docker network?
   # host: localhost
   # When using docker instance
