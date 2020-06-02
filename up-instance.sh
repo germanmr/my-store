@@ -19,10 +19,10 @@ echo "Build the Jar"
 mvn clean install -Dmaven.test.skip=true
 echo "------------------------------------------------"
 echo "Copy the docker file"
-cp Dockerfile target/Dockerfile
+#cp Dockerfile target/Dockerfile
 echo "------------------------------------------------"
 echo "Build the image"
-docker build -t my-store target/
+#docker build -t my-store target/
 echo "------------------------------------------------"
 echo "Starting with docker-compose"
 docker-compose up

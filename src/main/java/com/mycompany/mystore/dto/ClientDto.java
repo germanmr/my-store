@@ -1,11 +1,16 @@
 package com.mycompany.mystore.dto;
 
 import javax.annotation.Nonnull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
 import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "movie", propOrder = { "id", "name" })
 public class ClientDto {
 
     private final long id;

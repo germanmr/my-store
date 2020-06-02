@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: my-store
+    image: german1982/my-store
     ports:
       - "8080:8080"
     depends_on:
@@ -16,8 +16,32 @@ services:
     networks:
       - mystore-network
 
+  my-client:
+    container_name: my-client
+    image: german1982/my-client
+#    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbpostgresql
+    networks:
+      - mystore-network
+  dbpostgresql:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb
+    networks:
+      - mystore-network
+
 networks:
   mystore-network:
+
+
+
 
 #####################################################################
 #                USING LINK VERSION!!

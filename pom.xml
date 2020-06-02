@@ -25,6 +25,11 @@
         <javaxinject.version>1</javaxinject.version>
         <mockito.version>3.3.3</mockito.version>
         <guava.version>29.0-jre</guava.version>
+        <maven.findbugs.plugin.version>3.0.5</maven.findbugs.plugin.version>
+        <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+        <resteasy.version>3.0.14.Final</resteasy.version>
+        <retrofit.version>2.3.0</retrofit.version>
+        <testcontainers.version>1.14.3</testcontainers.version>
     </properties>
 
     <dependencies>
@@ -75,10 +80,10 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.data</groupId>-->
+<!--            <artifactId>spring-data-redis</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>redis.clients</groupId>
@@ -86,6 +91,49 @@
             <version>3.1.0</version>
             <type>jar</type>
         </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>retrofit</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-gson</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.4</version>
+            <scope>provided</scope>
+        </dependency>
+
 
     </dependencies>
 
@@ -95,7 +143,53 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!--            <plugin>-->
+            <!--                <groupId>org.codehaus.mojo</groupId>-->
+            <!--                <artifactId>findbugs-maven-plugin</artifactId>-->
+            <!--                <version>${maven.findbugs.plugin.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <outputDirectory>${project.build.directory}/findbugs</outputDirectory>-->
+            <!--                    <xmlOutput>true</xmlOutput>-->
+            <!--                    <xmlOutputDirectory>target/findbugs</xmlOutputDirectory>-->
+            <!--                    <threshold>Low</threshold>-->
+            <!--                    <effort>Max</effort>-->
+            <!--                    <failOnError>true</failOnError>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile-maven-version}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>german1982/${project.build.finalName}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+
         </plugins>
+        <finalName>my-store</finalName>
     </build>
 
 

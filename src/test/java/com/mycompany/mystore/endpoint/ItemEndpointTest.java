@@ -2,6 +2,7 @@ package com.mycompany.mystore.endpoint;
 
 import com.mycompany.mystore.dto.ItemDto;
 import com.mycompany.mystore.service.ItemService;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,7 +28,7 @@ public class ItemEndpointTest {
     @Mock
     private ItemService itemService;
 
-    //    @Test
+    @Test
     public void get() {
 
         ItemDto expected = itemDto;
