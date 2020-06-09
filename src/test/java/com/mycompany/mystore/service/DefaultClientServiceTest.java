@@ -23,14 +23,14 @@ public class DefaultClientServiceTest {
 
     //    @Mock
     @Autowired
-    private EmployeeApiRetrofit employeeRetrofitApi;
+    private MyClientApi api;
 
     @Test
     public void get() {
 
         ClientDto expected = new ClientDto(1, "German");
 
-//        when(clientService.getById(CLIENT_ID)).thenReturn(expected);
+//        when(api.get(CLIENT_ID)).thenReturn(variable);
 
         ClientDto actual = clientService.getById(CLIENT_ID);
 
