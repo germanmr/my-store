@@ -27,7 +27,7 @@
         <guava.version>29.0-jre</guava.version>
         <maven.findbugs.plugin.version>3.0.5</maven.findbugs.plugin.version>
         <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
-        <resteasy.version>3.0.14.Final</resteasy.version>
+        <resteasy.version>4.5.7.Final</resteasy.version>
         <retrofit.version>2.3.0</retrofit.version>
         <testcontainers.version>1.14.3</testcontainers.version>
     </properties>
